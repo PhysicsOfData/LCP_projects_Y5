@@ -5,12 +5,11 @@ class Player:
         self.k = k
     
     def play(self, hist):
-        return random() < k
+        return random() < self.k
     
 class TftPlayer(Player):
     def play(self, hist):
         return hist[-1]
-    
     
 # so for example we can have
 
