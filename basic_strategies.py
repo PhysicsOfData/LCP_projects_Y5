@@ -5,7 +5,7 @@ class Player:
         self.k=k
     
     def play(self, hist):
-        return random()<k
+        return random()<self.k
     
 class TftPlayer(Player):
     def play(self, hist):
@@ -35,13 +35,13 @@ def game(pl1, pl2, it, payoff=(3,2,1,0)):
         if hist1[-1] and hist2[-1]:
             points[0]+=payoff[1]
             points[1]+=payoff[1]
-        else if hist1[-1] and not hist2[-1]:
+        elif hist1[-1] and not hist2[-1]:
             points[1]+=payoff[0]
             points[0]+=payoff[3]
-        else if not hist1[-1] and hist2[-1]:
+        elif not hist1[-1] and hist2[-1]:
             points[1]+=payoff[3]
             points[0]+=payoff[0]
-        else if not hist1[-1] and not hist2[-1]:
+        elif not hist1[-1] and not hist2[-1]:
             points[0]+=payoff[2]
             points[1]+=payoff[2]
     
