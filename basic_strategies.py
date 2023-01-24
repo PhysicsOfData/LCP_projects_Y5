@@ -24,7 +24,7 @@ tt_guy=TftPlayer(0) #reacts with last opponent move
 
 # basic mechanics for 1-on-1 game
 
-def game(pl1, pl2, it):
+def game(pl1, pl2, it, values=(3,2,1,0)):
     hist1=[True] #only for the correct initialization of tt_guy
     hist2=[True] #same
     points=[0,0]
@@ -33,14 +33,16 @@ def game(pl1, pl2, it):
         hist1.append(pl1.play(hist2))
         hist2.append(pl2.play(hist1))
         if hist1[-1] and hist2[-1]:
-            points[0]+=2
-            points[1]+=2
+            points[0]+=values[1]
+            points[1]+=values[1]
         else if hist1[-1] and not hist2[-1]:
-            points[1]+=3
+            points[1]+=values[0]
+            points[0]+=values[3]
         else if not hist1[-1] and hist2[-1]:
-            points[1]+=3
+            points[1]+=values[3]
+            points[0]+=values[0]
         else if not hist1[-1] and not hist2[-1]:
-            points[0]+=1
-            points[1]+=1
+            points[0]+=values[2]
+            points[1]+=values[2]
     
     return points
