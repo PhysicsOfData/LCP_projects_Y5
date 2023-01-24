@@ -27,9 +27,11 @@ def game(pl1, pl2, it, payoff=(3, 2, 1, 0)):
     hist2 = [True] # same
     points = [0, 0]
     
-    for i in range(it): 
-        hist1.append(pl1.play(hist2))
-        hist2.append(pl2.play(hist1))
+    for i in range(it):
+        res1=pl1.play(hist2)
+        res2=pl2.play(hist1)
+        hist1.append(res1)
+        hist2.append(res1)
         if hist1[-1] and hist2[-1]:
             points[0] += payoff[1]
             points[1] += payoff[1]
