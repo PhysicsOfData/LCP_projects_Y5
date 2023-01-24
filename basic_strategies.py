@@ -17,7 +17,7 @@ bad_guy = Player(0)   # never cooperates
 avg_guy = Player(0.5) # cooperates half the time
 mn_guy = Player(0.75) # mostly cooperates
 mb_guy = Player(0.25) # rarely cooperates
-tt_guy = TftPlayer(0) # reacts with last opponent move
+tt_guy = TftPlayer(-1) # reacts with last opponent move
 
 # basic mechanics for 1-on-1 game
 def game(pl1, pl2, it, payoff=(3, 2, 1, 0)):
@@ -29,7 +29,7 @@ def game(pl1, pl2, it, payoff=(3, 2, 1, 0)):
         res1 = pl1.play(hist2)
         res2 = pl2.play(hist1)
         hist1.append(res1)
-        hist2.append(res1)
+        hist2.append(res2)
         if hist1[-1] and hist2[-1]:
             points[0] += payoff[1]
             points[1] += payoff[1]
